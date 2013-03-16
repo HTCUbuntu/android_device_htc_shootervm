@@ -81,8 +81,8 @@ ro.ril.disable.power.collapse=0
 pm.sleep_mode=1
 
 # Media
-ro.media.enc.jpeg.quality=100
-ro.media.enc.hprof.vid.bps=8000000
+#ro.media.enc.jpeg.quality=100
+#ro.media.enc.hprof.vid.bps=8000000
 
 #Touchscreen Performance
 windowsmgr.max_events_per_sec=240
