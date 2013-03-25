@@ -108,8 +108,8 @@ PRODUCT_COPY_FILES += \
     device/htc/shootervm/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
 
 # GPS
-PRODUCT_PACKAGES += \
-    gps.shooter
+#PRODUCT_PACKAGES += \
+#    gps.shooter
 
 PRODUCT_PACKAGES += \
     Torch \
