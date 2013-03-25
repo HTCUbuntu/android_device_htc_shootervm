@@ -76,7 +76,7 @@ PRODUCT_COPY_FILES += \
 # Copy Bluetooth firmware, since BCM4329 is a BT/WiFi chip
 PRODUCT_COPY_FILES += \
     device/htc/shootervm/firmware/bcm4330.hcd:system/vendor/firmware/bcm4330.hcd \
-    device/htc/shootervm/firmware/bcm4330.hcd:system/vendor/firmware/fw_bcm4329.bin \
+    device/htc/shootervm/firmware/fw_bcm4329.bin:system/vendor/firmware/fw_bcm4329.bin \
     device/htc/shootervm/firmware/BCM4329B1_002.002.023.0589.0632.hcd:system/vendor/firmware/bcm4329.hcd
 
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
