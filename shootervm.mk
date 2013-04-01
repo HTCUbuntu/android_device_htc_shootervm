@@ -86,17 +86,25 @@ PRODUCT_COPY_FILES += \
     device/htc/shootervm/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl\
     device/htc/shootervm/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl\
     device/htc/shootervm/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
-    device/htc/shootervm/keylayout/shooter-keypad.kl:system/usr/keylayout/shooter-keypad.kl
+    device/htc/shootervm/keylayout/shooter-keypad.kl:system/usr/keylayout/shooter-keypad.kl \
+    device/htc/shootervm/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl\
+    device/htc/shootervm/keylayout/Generic.kl:system/usr/keylayout/Generic.kl
 
 # Keychars
 PRODUCT_COPY_FILES += \
-    device/htc/shootervm/keychars/shooter-keypad.kcm.bin:system/usr/keychars/shooter-keypad.kcm \
-    device/htc/shootervm/keychars/BT_HID.kcm.bin:system/usr/keychars/BT_HID.kcm
+    device/htc/shootervm/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
+    device/htc/shootervm/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm \
+    device/htc/shootervm/keychars/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
+    device/htc/shootervm/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm 
+
 
 # idc
 PRODUCT_COPY_FILES += \
     device/htc/shootervm/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
-    device/htc/shootervm/idc/shooter-keypad.idc:system/usr/idc/shooter-keypad.idc
+    device/htc/shootervm/idc/projector_input.idc:system/usr/idc/projector_input.idc \
+    device/htc/shootervm/idc/qwerty.idc:system/usr/idc/qwerty.idc \
+    device/htc/shootervm/idc/qwerty2.idc:system/usr/idc/qwerty2.idc
+
 
 # Device Specific Firmware
 PRODUCT_COPY_FILES += \
