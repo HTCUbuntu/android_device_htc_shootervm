@@ -19,10 +19,19 @@ import common
 import os
 import shutil
 
-#TARGET_DIR = os.getenv('OUT')
-#UTILITIES_DIR = os.path.join(TARGET_DIR, 'utilities')
+# Added ramjet73's hack for deleting WiMax Log's
 
 def FullOTA_Assertions(info):
-  info.script.AppendExtra(
-        ('assert(getprop("ro.bootloader") == "1.04.2000" || getprop("ro.bootloader") == "1.50.5050" || getprop("ro.bootloader") == "1.40.1100" || getprop("ro.bootloader") == "1.30.0000" || getprop("ro.bootloader") == "1.40.0000" || getprop("ro.bootloader") == "1.50.0000" || getprop("ro.bootloader") == "1.40.1000");'))
-
+  info.script.AppendExtra('assert(getprop("ro.bootloader") == "1.04.2000" || getprop("ro.bootloader") == "1.50.5050" || getprop("ro.bootloader") == "1.40.1100"|| getprop("ro.bootloader") == "1.30.0000" || getprop("ro.bootloader") == "1.40.0000" || getprop("ro.bootloader") == "1.50.0000" || getprop("ro.bootloader") == "1.40.1000");')
+  info.script.AppendExtra('ui_print("Running Ramjet73 Log Fix");')
+  info.script.AppendExtra('ui_print("* Change WiMax logs directory to immutable and delete logs");')
+  info.script.AppendExtra('ui_print("Mounting /data...");')
+  info.script.AppendExtra('run_program("/sbin/busybox", "mount", "/data");')
+  info.script.AppendExtra('show_progress(1.000000, 20);')
+  info.script.AppendExtra('delete_recursive("/data/wimax/log");')
+  info.script.AppendExtra('run_program("/sbin/busybox", "mkdir", "/data/wimax/log");')
+  info.script.AppendExtra('run_program("/sbin/busybox", "chattr", "+i", "/data/wimax/log");')
+  info.script.AppendExtra('unmount("/data");')
+  info.script.AppendExtra('ui_print("WiMax fix is completed");')
+  info.script.AppendExtra('show_progress(1.000000, 0);')
+  info.script.AppendExtra('ui_print("Installing Angry Bean!");')
