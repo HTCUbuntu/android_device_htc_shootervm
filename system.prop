@@ -81,6 +81,7 @@ ro.ril.disable.power.collapse=0
 pm.sleep_mode=1
 
 # Media
+debug.composition.type = gpu
 #ro.media.enc.jpeg.quality=100
 #ro.media.enc.hprof.vid.bps=8000000
 
