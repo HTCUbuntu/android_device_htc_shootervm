@@ -28,6 +28,10 @@ gsm.operator.iso-country = us
 ro.cdma.home.operator.numeric=310120
 ro.cdma.home.operator.alpha=Virgin Mobile
 
+# For QC perf binary hooks
+# src:vendor/qcom/proprietary/android-perf/release/lib/<CPU arch>/libqc-opt.so
+ro.vendor.extension_library=/system/lib/libqc-opt.so
+
 #
 # system props for the data modules
 #
@@ -77,6 +81,7 @@ ro.qualcomm.cabl=1
 ro.engineerid = 3
 
 # Sleep
+ro.config.hw_fast_dormancy=1
 ro.ril.disable.power.collapse=0
 pm.sleep_mode=1
 
