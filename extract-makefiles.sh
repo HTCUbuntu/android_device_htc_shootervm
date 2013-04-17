@@ -42,7 +42,7 @@ adb pull /system/lib/libchromatix_mt9e013_preview.so ../../../vendor/$MANUFACTUR
 adb pull /system/lib/libchromatix_mt9p012_ar.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libchromatix_mt9p012_default_video.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libchromatix_mt9p012_km_default_video.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /systemlib/libchromatix_mt9p012_km_preview.so/ ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libchromatix_mt9p012_km_preview.so/ ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libchromatix_mt9p012_preview.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libchromatix_mt9t013_default_video.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libchromatix_mt9t013_preview.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -110,9 +110,7 @@ adb pull /system/lib/hw/sensors.shooter.so ../../../vendor/$MANUFACTURER/$DEVICE
 adb pull /system/lib/libaudioalsa.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libaudcal.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libacdbmapper.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libacdbloader.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libC2D2.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libc2d2_z180.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libcamerapp.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libcameraSP.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libcameraface.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -126,7 +124,7 @@ adb pull /system/lib/libgemini.so ../../../vendor/$MANUFACTURER/$DEVICE/propriet
 adb pull /system/lib/libgemini2.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/egl/libGLESv1_CM_adreno200.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/egl/libGLESv2_adreno200.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/egl/libGLESv2S3D_adreno200.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/egl/libq3dtools_adreno200.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/egl/eglsubAndroid.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libgsl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libsc-a2xx.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -175,8 +173,16 @@ adb pull /system/lib/libv8.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 
 # Prebuilt libraries that are needed to build open-source libraries
 PRODUCT_COPY_FILES += \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcamera.so:obj/lib/libcamera.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudioalsa.so:obj/lib/libaudioalsa.so
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/camera.default.so:obj/lib/hw/camera.default.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudioalsa.so:obj/lib/libaudioalsa.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libacdbmapper.so:obj/lib/libacdbmapper.so
+
+
+PRODUCT_COPY_FILES += \
+    vendor/htc/shootervm/proprietary/camera.default.so:obj/lib/hw/camera.default.so \
+    vendor/htc/shootervm/proprietary/libaudioalsa.so:obj/lib/libaudioalsa.so \
+    vendor/htc/shootervm/proprietary/libacdbloader.so:obj/lib/libacdbloader.so \
+    vendor/htc/shootervm/proprietary/libacdbmapper.so:obj/lib/libacdbmapper.so
 
 # All the blobs necessary for vivow
 PRODUCT_COPY_FILES += \\
@@ -202,7 +208,7 @@ vendor/__MANUFACTURER__/__DEVICE__/proprietary/libchromatix_mt9e013_preview.so:/
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libchromatix_mt9p012_ar.so:/system/lib/libchromatix_mt9p012_ar.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libchromatix_mt9p012_default_video.so:/system/lib/libchromatix_mt9p012_default_video.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libchromatix_mt9p012_km_default_video.so:/system/lib/libchromatix_mt9p012_km_default_video.so \\
-vendor/__MANUFACTURER__/__DEVICE__/proprietary/libchromatix_mt9p012_km_preview.so:/systemlib/libchromatix_mt9p012_km_preview.so/ \\
+vendor/__MANUFACTURER__/__DEVICE__/proprietary/libchromatix_mt9p012_km_preview.so:/system/lib/libchromatix_mt9p012_km_preview.so/ \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libchromatix_mt9p012_preview.so:/system/lib/libchromatix_mt9p012_preview.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libchromatix_mt9t013_default_video.so:/system/lib/libchromatix_mt9t013_default_video.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libchromatix_mt9t013_preview.so:/system/lib/libchromatix_mt9t013_preview.so \\
@@ -229,8 +235,8 @@ vendor/__MANUFACTURER__/__DEVICE__/proprietary/libchromatix_vx6953_preview.so:/s
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/drmserver:/system/bin/drmserver \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/DxDrmServerIpc:/system/bin/DxDrmServerIpc \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/DxDrmConfig_Server.txt:/system/etc/DxDrmConfig_Server.txt \\
-vendor/__MANUFACTURER__/__DEVICE__/proprietary/permissions/com.google.widevine.software.drm.xml:/system/etc/permissions/com.google.widevine.software.drm.xml \\
-vendor/__MANUFACTURER__/__DEVICE__/proprietary/framework/com.google.widevine.software.drm.jar:/system/framework/com.google.widevine.software.drm.jar \\
+vendor/__MANUFACTURER__/__DEVICE__/proprietary/com.google.widevine.software.drm.xml:/system/etc/permissions/com.google.widevine.software.drm.xml \\
+vendor/__MANUFACTURER__/__DEVICE__/proprietary/com.google.widevine.software.drm.jar:/system/framework/com.google.widevine.software.drm.jar \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libdivxdrmdecrypt.so:/system/lib/libdivxdrmdecrypt.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libdrm1.so:/system/lib/libdrm1.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libdrm1_jni.so:/system/lib/libdrm1_jni.so \\
@@ -258,21 +264,19 @@ vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimaxDumpLastKmsg:/system/bin/wim
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimaxDumpLogcat:/system/bin/wimaxDumpLogcat \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimaxFactoryReset:/system/bin/wimaxFactoryReset \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimax_mtd:/system/bin/wimax_mtd \\
-vendor/__MANUFACTURER__/__DEVICE__/proprietary/dhcp/wimaxDhcp.conf:/system/etc/wimax/dhcp/wimaxDhcp.conf \\
-vendor/__MANUFACTURER__/__DEVICE__/proprietary/sequansd/DefaultTree.xml:/system/etc/wimax/sequansd/DefaultTree.xml \\
-vendor/__MANUFACTURER__/__DEVICE__/proprietary/sequansd/sequansd_app.xml:/system/etc/wimax/sequansd/sequansd_app.xml \\
+vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimaxDhcp.conf:/system/etc/wimax/dhcp/wimaxDhcp.conf \\
+vendor/__MANUFACTURER__/__DEVICE__/proprietary/DefaultTree.xml:/system/etc/wimax/sequansd/DefaultTree.xml \\
+vendor/__MANUFACTURER__/__DEVICE__/proprietary/sequansd_app.xml:/system/etc/wimax/sequansd/sequansd_app.xml \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcrypto.so:/system/lib/libcrypto.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libdmtree.so:/system/lib/libdmtree.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libhtcdm.so:/system/lib/libhtcdm.so \\
-vendor/__MANUFACTURER__/__DEVICE__/proprietary/framework/wimax.jar:/system/framework/wimax.jar \\
+vendor/__MANUFACTURER__/__DEVICE__/proprietary/wimax.jar:/system/framework/wimax.jar \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/camera.default.so:/system/lib/hw/camera.default.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/sensors.shooter.so:/system/lib/hw/sensors.shooter.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudioalsa.so:/system/lib/libaudioalsa.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudcal.so:/system/lib/libaudcal.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libacdbmapper.so:/system/lib/libacdbmapper.so \\
-vendor/__MANUFACTURER__/__DEVICE__/proprietary/libacdbloader.so:/system/lib/libacdbloader.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libC2D2.so:/system/lib/libC2D2.so \\
-vendor/__MANUFACTURER__/__DEVICE__/proprietary/libc2d2_z180.so:/system/lib/libc2d2_z180.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcamerapp.so:/system/lib/libcamerapp.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcameraSP.so:/system/lib/libcameraSP.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcameraface.so:/system/lib/libcameraface.so \\
@@ -286,7 +290,7 @@ vendor/__MANUFACTURER__/__DEVICE__/proprietary/libgemini.so:/system/lib/libgemin
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libgemini2.so:/system/lib/libgemini2.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLESv1_CM_adreno200.so:/system/lib/egl/libGLESv1_CM_adreno200.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLESv2_adreno200.so:/system/lib/egl/libGLESv2_adreno200.so \\
-vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLESv2S3D_adreno200.so:/system/lib/egl/libGLESv2S3D_adreno200.so \\
+vendor/__MANUFACTURER__/__DEVICE__/proprietary/libq3dtools_adreno200.so:/system/lib/egl/libq3dtools_adreno200.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/eglsubAndroid.so:/system/lib/egl/eglsubAndroid.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libgsl.so:/system/lib/libgsl.so \\
 vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsc-a2xx.so:/system/lib/libsc-a2xx.so \\
@@ -318,4 +322,4 @@ vendor/__MANUFACTURER__/__DEVICE__/proprietary/libv8.so:/system/lib/libv8.so \\
 
 EOF
 
-./setup-makefiles.sh
+sh setup-makefiles.sh
